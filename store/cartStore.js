@@ -3,14 +3,14 @@ import { decorate, observable } from "mobx";
 class CartStore {
   items = [];
 
-  addItemToCart = addItem => {
+  addItemToCart = newItem => {
     const foundItem = this.items.find(
-      cartItem => cartItem.drink == item.drink && cartItem.option == item.option
+      item => newItem.drink === item.drink && newItem.option === item.option
     );
     if (foundItem) {
       foundItem.quantity++;
     } else {
-      this.items.push(addItem);
+      this.items.push(newItem);
     }
   };
   //   this.items.push(addItem);
@@ -22,6 +22,12 @@ class CartStore {
 
   checkoutCart() {
     this.items = [];
+  }
+
+  get quantity() {
+    let total = 0;
+    this.items.forEach(item => (total += items.quantity));
+    return quantity;
   }
 }
 
